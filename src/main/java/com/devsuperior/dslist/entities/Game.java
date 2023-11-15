@@ -19,7 +19,10 @@ public class Game {
     private String platforms;
     private Double score;
     private String imgUrl;
+    @Column(columnDefinition = "TEXT") //anotação p/ adicionar uma coluna tipo texto na entidade
     private String shortDescription;
+
+    @Column(columnDefinition = "TEXT") //anotação p/ adicionar uma coluna tipo texto na entidade
     private String longDescription;
 
     public Game() {
@@ -73,8 +76,8 @@ public class Game {
         return platforms;
     }
 
-    public void setPlatforms(String platforms) {
-        this.platforms = platforms;
+    public void setPlatforms(String platform) {
+        this.platforms = platform;
     }
 
     public Double getScore() {
