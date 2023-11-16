@@ -18,7 +18,7 @@ e retornar as respostas apropriadas p/ frontend*/
 
 public class GameController {
 
-@Autowired
+@Autowired//anotação para injetar dependencia da classe GameService
     private GameService gameService;
 
 @GetMapping// serve para mapear o metodo para solicitaçoes usando htp GET
