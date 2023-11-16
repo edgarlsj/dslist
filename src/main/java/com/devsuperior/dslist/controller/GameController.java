@@ -2,6 +2,7 @@ package com.devsuperior.dslist.controller;
 
 
 import com.devsuperior.dslist.dto.GameDTO;
+import com.devsuperior.dslist.dto.GameListDTO;
 import com.devsuperior.dslist.dto.GameMinDTO;
 import com.devsuperior.dslist.entities.Game;
 import com.devsuperior.dslist.service.GameService;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @RestController /*anotação usada para marcar uma classe como controlador, responsavel por lidar com HTTP
 e retornar as respostas apropriadas p/ frontend*/
-@RequestMapping(value = "/games")
+@RequestMapping(value = "/games")//usada para mapear requisiçoes HTTP para os metodos no controller. ao adiocionar a um metodo define qual URL acionará esse metodo
 
 
 public class GameController {
@@ -37,4 +38,6 @@ public class GameController {
         GameDTO result = gameService.findById(id);
         return result;
     }
+
+
 }
