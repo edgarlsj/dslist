@@ -1,11 +1,13 @@
 package com.devsuperior.dslist.controller;
 
 
+import com.devsuperior.dslist.dto.GameDTO;
 import com.devsuperior.dslist.dto.GameMinDTO;
 import com.devsuperior.dslist.entities.Game;
 import com.devsuperior.dslist.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,14 +20,21 @@ e retornar as respostas apropriadas p/ frontend*/
 
 public class GameController {
 
-@Autowired//anotação para injetar dependencia da classe GameService
+    @Autowired//anotação para injetar dependencia da classe GameService
     private GameService gameService;
 
-@GetMapping// serve para mapear o metodo para solicitaçoes usando htp GET
-    public List<GameMinDTO> findAll(){
+    @GetMapping// Serve para mapear o metodo para solicitaçoes usando htp GET
+    //metodo do Endpoint que retorna toda lista de objeto sem DTO
+    public List<GameMinDTO> findAll() {
         List<GameMinDTO> result = gameService.findAll();
         return result;
 
     }
 
+    //metodo do Endpoint que retorna p/ front lista por Id
+    @GetMapping(value = "/{id}") //@PatchVariable usado para capturar valores da URI e vincular no metodo Long Id
+    public GameDTO findById(@PathVariable Long id) {
+        GameDTO result = gameService.findById(id);
+        return result;
+    }
 }
