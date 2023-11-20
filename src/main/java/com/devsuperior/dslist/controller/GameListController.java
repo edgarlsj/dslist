@@ -21,7 +21,7 @@ public class GameListController {
     private GameListService gameListService;
     @Autowired
     private GameService gameService;
-    //metodo do endpoint que retona a lista de games 
+    //metodo do endpoint que retona a lista de games
     @GetMapping
     public List<GameListDTO> findAll() {
         List<GameListDTO> result = gameListService.findAll();
