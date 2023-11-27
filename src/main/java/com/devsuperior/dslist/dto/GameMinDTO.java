@@ -4,7 +4,7 @@ import com.devsuperior.dslist.entities.Game;
 import com.devsuperior.dslist.projection.GameMinProjection;
 import org.springframework.beans.BeanUtils;
 
-public class GameMinDTO {
+public class GameMinDTO implements  Comparable<GameMinDTO>{
 
 
     private Long id;
@@ -58,4 +58,11 @@ public class GameMinDTO {
     }
 
 
+    @Override
+    public int compareTo(GameMinDTO o) {
+        if(this.getTitle() != null && o.getTitle() != null){
+            return this.getTitle().compareTo(o.getTitle());
+        }
+        return -1;
+    }
 }

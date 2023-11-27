@@ -7,11 +7,10 @@ import com.devsuperior.dslist.dto.GameMinDTO;
 import com.devsuperior.dslist.entities.Game;
 import com.devsuperior.dslist.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+
+import java.util.Collections;
 import java.util.List;
 
 @RestController /*anotação usada para marcar uma classe como controlador, responsavel por lidar com HTTP
@@ -28,11 +27,13 @@ public class GameController {
     //metodo do Endpoint que retorna toda lista de objeto sem DTO
     public List<GameMinDTO> findAll() {
         List<GameMinDTO> result = gameService.findAll();
+        Collections.sort(result);
         return result;
 
     }
 
     //metodo do Endpoint que retorna p/ front lista por Id
+
     @GetMapping(value = "/{id}") //@PatchVariable usado para capturar valores da URI e vincular no metodo Long Id
     public GameDTO findById(@PathVariable Long id) {
         GameDTO result = gameService.findById(id);
